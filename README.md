@@ -1,5 +1,5 @@
 # ICPC
 
-Codes for practising ICPC and beyond :P 
+Codes for ICPC
 
 Team - juice_bar ( AyushBansal ,Buridi Aditya,Ranjith Kumar)
