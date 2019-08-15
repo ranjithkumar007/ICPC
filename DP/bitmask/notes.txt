@@ -1,0 +1,11 @@
+Hamiltonian paths: cover all vertices once.
+
+for #simple paths : 
+	find #ham walks as dp[mask][i]
+	#simple paths = 1/2 * sum_over_i(dp[mask][i]) (__builtin_popcount(mask) >= 2)
+
+ham cycle:
+	dp[1][0] = true -> calc ham walks starting at 0th vertex.
+	rest same
+
+
