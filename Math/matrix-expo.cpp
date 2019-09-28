@@ -2,6 +2,57 @@
 
 using namespace std;
 
+struct Matrix {
+	vector<vector<ll> > t;
+ 
+	Matrix(ll n) {
+		t = vvl(n, vl(n));
+	}
+ 
+	ll size() {
+		return t.size();
+	}
+ 
+	Matrix operator* (Matrix m1) {
+		ll n = size();
+		Matrix temp(n);
+		rep(i, n)
+			rep(j, n)
+				rep(k, n)
+					temp.t[i][j] = (temp.t[i][j] + (t[i][k] * m1.t[k][j]) % MOD) % MOD;
+		
+		return temp;
+	}
+};
+ 
+void mat_expo(Matrix &a, ll k)
+{
+	ll n = a.size();
+	Matrix res(n);
+	rep(i, n) res.t[i][i] = 1;
+ 
+	while (k) {
+		if (k & 1)
+			res = (res * a);
+ 
+		k >>= 1;
+		a = (a * a);
+	}
+ 
+	a = res;
+}
+
+void solve() {
+	ll n, k;
+	cin >> n >> k;
+
+	Matrix a(n);
+
+	rep(i, n) rep(j, n) cin >> a.t[i][j];
+
+	mat_expo(a, k);
+}
+
 vector<vector<int>> mat_mul(const vector<vector<int>> &a, const vector<vector<int>> &b)
 {
 	if (a[0].size() != b.size()) {return {{-1}};}
